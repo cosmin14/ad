@@ -1,8 +1,6 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using Gtk;
-
+using SerpisAd;
 using PArticulo;
 
 public partial class MainWindow: Gtk.Window
@@ -10,37 +8,14 @@ public partial class MainWindow: Gtk.Window
 	public MainWindow (): base (Gtk.WindowType.Toplevel)
 	{
 		Build ();
-
 		Console.WriteLine ("MainWindow ctor.");
-
 		QueryResult queryResult = PersisterHelper.Get ("select * from articulo");
+		TreeViewHelper.Fill (treeView, queryResult);
 
-		string[] columnNames = queryResult.ColumnNames;
+		newAction.Activated += delegate {
+			new ArticuloView();
+		};
 
-		CellRendererText cellRendererText = new CellRendererText ();
-
-		for (int index = 0; index < columnNames.Length; index++) {
-			int column = index;
-			treeView.AppendColumn (columnNames [index], cellRendererText, 
-				delegate(TreeViewColumn tree_column, CellRenderer cell, TreeModel tree_model, TreeIter iter) {
-					IList row = (IList)tree_model.GetValue(iter, 0);
-					cellRendererText.Text = row[column].ToString();
-			});
-		}
-
-		ListStore listStore = new ListStore (typeof(IList));
-
-		foreach (IList row in queryResult.Rows)
-			listStore.AppendValues (row);
-		treeView.Model = listStore;
-	}
-
-
-	private Type[] getTypes(int count) {
-		List<Type> types = new List<Type> ();
-		for (int index = 0; index < count; index++)
-			types.Add (typeof(string));
-		return types.ToArray ();
 	}
 
 	protected void OnDeleteEvent (object sender, DeleteEventArgs a)
@@ -48,4 +23,11 @@ public partial class MainWindow: Gtk.Window
 		Application.Quit ();
 		a.RetVal = true;
 	}
+	/*
+	protected void OnNewActionActivated (object sender, EventArgs e)
+	{
+		new ArticuloView ();
+		//throw new NotImplementedException ();
+	}
+	*/
 }

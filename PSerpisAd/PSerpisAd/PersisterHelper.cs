@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using Gtk;
 
-namespace PArticulo
+namespace SerpisAd
 {
 	public class PersisterHelper
 	{
@@ -42,14 +42,6 @@ namespace PArticulo
 				columnNames.Add (dataReader.GetName (index));
 			return columnNames.ToArray ();
 		}
-
-
-//		private static IList getRows(IDataReader dataReader) {
-//			List<IList> rows = new List<IList> ();
-//			while (dataReader.Read)
-//				rows.Add (row);
-//			return rows;
-//		}
 
 		
 		private static IList getRows(IDataReader dataReader) {
