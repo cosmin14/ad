@@ -7,6 +7,9 @@ namespace SerpisAd
 	public class TreeViewHelper
 	{
 		public static void Fill(TreeView treeView, QueryResult queryResult){
+
+			removeAllColumns (treeView);
+
 			string[] columnNames = queryResult.ColumnNames;
 			CellRendererText cellRendererText = new CellRendererText ();
 
@@ -25,6 +28,12 @@ namespace SerpisAd
 					listStore.AppendValues (row);
 
 			treeView.Model = listStore;
+		}
+
+		private static void removeAllColumns(TreeView treeView){
+			TreeViewColumn[] treeViewColumns = treeView.Columns;
+			foreach (TreeViewColumn treeViewColumn in treeViewColumns)
+				treeView.RemoveColumn (treeViewColumn);
 		}
 	}
 }

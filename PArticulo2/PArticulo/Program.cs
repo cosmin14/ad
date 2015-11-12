@@ -10,7 +10,7 @@ namespace PArticulo
 		public static void Main (string[] args)
 		{
 			App.Instance.DbConnection = new MySqlConnection (
-				"Database=dbprueba;Data Source=localhost;User Id=root;Password=root"
+				"Database=dbprueba;Data Source=localhost;User Id=root;Password="
 				);
 			App.Instance.DbConnection.Open ();
 
