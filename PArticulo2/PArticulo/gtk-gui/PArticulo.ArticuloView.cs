@@ -34,7 +34,7 @@ namespace PArticulo
 			// Widget PArticulo.ArticuloView
 			this.UIManager = new global::Gtk.UIManager ();
 			global::Gtk.ActionGroup w1 = new global::Gtk.ActionGroup ("Default");
-			this.saveAction = new global::Gtk.Action ("saveAction", null, null, "gtk-save");
+			this.saveAction = new global::Gtk.Action ("saveAction", null, global::Mono.Unix.Catalog.GetString ("Guardar información"), "gtk-save");
 			w1.Add (this.saveAction, null);
 			this.Action = new global::Gtk.Action ("Action", null, null, null);
 			w1.Add (this.Action, null);
@@ -120,6 +120,7 @@ namespace PArticulo
 			this.spinButtonPrecio.Name = "spinButtonPrecio";
 			this.spinButtonPrecio.Adjustment.PageIncrement = 10D;
 			this.spinButtonPrecio.ClimbRate = 1D;
+			this.spinButtonPrecio.Digits = ((uint)(2));
 			this.spinButtonPrecio.Numeric = true;
 			this.table3.Add (this.spinButtonPrecio);
 			global::Gtk.Table.TableChild w8 = ((global::Gtk.Table.TableChild)(this.table3 [this.spinButtonPrecio]));

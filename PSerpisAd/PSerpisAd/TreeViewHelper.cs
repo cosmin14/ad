@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using Gtk;
+using System.Data;
 
 namespace SerpisAd
 {
@@ -34,6 +35,19 @@ namespace SerpisAd
 			TreeViewColumn[] treeViewColumns = treeView.Columns;
 			foreach (TreeViewColumn treeViewColumn in treeViewColumns)
 				treeView.RemoveColumn (treeViewColumn);
+		}
+
+		public static object GetId (TreeView treeView) {
+			TreeIter treeIter;
+			if (!treeView.Selection.GetSelected (out treeIter))
+				return null;
+			IList row = (IList)treeView.Model.GetValue (treeIter, 0);
+			return row [0];
+		}
+
+		public static bool isSelected (TreeView treeView){
+			TreeIter treeIter;
+			return treeView.Selection.GetSelected (out treeIter);
 		}
 	}
 }
