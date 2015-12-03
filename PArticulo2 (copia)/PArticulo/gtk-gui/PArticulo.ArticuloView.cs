@@ -7,18 +7,15 @@ namespace PArticulo
 		private global::Gtk.UIManager UIManager;
 		private global::Gtk.Action saveAction;
 		private global::Gtk.Action Action;
-		private global::Gtk.Action newAction;
-		private global::Gtk.Action removeAction;
-		private global::Gtk.Action editAction;
 		private global::Gtk.VBox vbox1;
 		private global::Gtk.Toolbar toolbar1;
 		private global::Gtk.Table table3;
-		private global::Gtk.ComboBox comboBoxCategoria;
-		private global::Gtk.Entry entryNombre;
+		private global::Gtk.ComboBox combobox1;
+		private global::Gtk.Entry entry1;
 		private global::Gtk.Label labelCategorias;
 		private global::Gtk.Label labelNombre;
 		private global::Gtk.Label labelPrecio;
-		private global::Gtk.SpinButton spinButtonPrecio;
+		private global::Gtk.SpinButton spinbutton1;
 
 		protected virtual void Build ()
 		{
@@ -26,16 +23,10 @@ namespace PArticulo
 			// Widget PArticulo.ArticuloView
 			this.UIManager = new global::Gtk.UIManager ();
 			global::Gtk.ActionGroup w1 = new global::Gtk.ActionGroup ("Default");
-			this.saveAction = new global::Gtk.Action ("saveAction", null, global::Mono.Unix.Catalog.GetString ("Guardar información"), "gtk-floppy");
+			this.saveAction = new global::Gtk.Action ("saveAction", null, null, "gtk-save");
 			w1.Add (this.saveAction, null);
 			this.Action = new global::Gtk.Action ("Action", null, null, null);
 			w1.Add (this.Action, null);
-			this.newAction = new global::Gtk.Action ("newAction", null, null, "gtk-add");
-			w1.Add (this.newAction, null);
-			this.removeAction = new global::Gtk.Action ("removeAction", null, null, "gtk-delete");
-			w1.Add (this.removeAction, null);
-			this.editAction = new global::Gtk.Action ("editAction", null, null, "gtk-edit");
-			w1.Add (this.editAction, null);
 			this.UIManager.InsertActionGroup (w1, 0);
 			this.AddAccelGroup (this.UIManager.AccelGroup);
 			this.Name = "PArticulo.ArticuloView";
@@ -61,10 +52,10 @@ namespace PArticulo
 			this.table3.RowSpacing = ((uint)(6));
 			this.table3.ColumnSpacing = ((uint)(6));
 			// Container child table3.Gtk.Table+TableChild
-			this.comboBoxCategoria = global::Gtk.ComboBox.NewText ();
-			this.comboBoxCategoria.Name = "comboBoxCategoria";
-			this.table3.Add (this.comboBoxCategoria);
-			global::Gtk.Table.TableChild w3 = ((global::Gtk.Table.TableChild)(this.table3 [this.comboBoxCategoria]));
+			this.combobox1 = global::Gtk.ComboBox.NewText ();
+			this.combobox1.Name = "combobox1";
+			this.table3.Add (this.combobox1);
+			global::Gtk.Table.TableChild w3 = ((global::Gtk.Table.TableChild)(this.table3 [this.combobox1]));
 			w3.TopAttach = ((uint)(1));
 			w3.BottomAttach = ((uint)(2));
 			w3.LeftAttach = ((uint)(1));
@@ -72,13 +63,13 @@ namespace PArticulo
 			w3.XOptions = ((global::Gtk.AttachOptions)(4));
 			w3.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child table3.Gtk.Table+TableChild
-			this.entryNombre = new global::Gtk.Entry ();
-			this.entryNombre.CanFocus = true;
-			this.entryNombre.Name = "entryNombre";
-			this.entryNombre.IsEditable = true;
-			this.entryNombre.InvisibleChar = '•';
-			this.table3.Add (this.entryNombre);
-			global::Gtk.Table.TableChild w4 = ((global::Gtk.Table.TableChild)(this.table3 [this.entryNombre]));
+			this.entry1 = new global::Gtk.Entry ();
+			this.entry1.CanFocus = true;
+			this.entry1.Name = "entry1";
+			this.entry1.IsEditable = true;
+			this.entry1.InvisibleChar = '•';
+			this.table3.Add (this.entry1);
+			global::Gtk.Table.TableChild w4 = ((global::Gtk.Table.TableChild)(this.table3 [this.entry1]));
 			w4.LeftAttach = ((uint)(1));
 			w4.RightAttach = ((uint)(2));
 			w4.XOptions = ((global::Gtk.AttachOptions)(4));
@@ -112,15 +103,14 @@ namespace PArticulo
 			w7.XOptions = ((global::Gtk.AttachOptions)(4));
 			w7.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child table3.Gtk.Table+TableChild
-			this.spinButtonPrecio = new global::Gtk.SpinButton (0, 100, 1);
-			this.spinButtonPrecio.CanFocus = true;
-			this.spinButtonPrecio.Name = "spinButtonPrecio";
-			this.spinButtonPrecio.Adjustment.PageIncrement = 10;
-			this.spinButtonPrecio.ClimbRate = 1;
-			this.spinButtonPrecio.Digits = ((uint)(2));
-			this.spinButtonPrecio.Numeric = true;
-			this.table3.Add (this.spinButtonPrecio);
-			global::Gtk.Table.TableChild w8 = ((global::Gtk.Table.TableChild)(this.table3 [this.spinButtonPrecio]));
+			this.spinbutton1 = new global::Gtk.SpinButton (0, 100, 1);
+			this.spinbutton1.CanFocus = true;
+			this.spinbutton1.Name = "spinbutton1";
+			this.spinbutton1.Adjustment.PageIncrement = 10;
+			this.spinbutton1.ClimbRate = 1;
+			this.spinbutton1.Numeric = true;
+			this.table3.Add (this.spinbutton1);
+			global::Gtk.Table.TableChild w8 = ((global::Gtk.Table.TableChild)(this.table3 [this.spinbutton1]));
 			w8.TopAttach = ((uint)(2));
 			w8.BottomAttach = ((uint)(3));
 			w8.LeftAttach = ((uint)(1));

@@ -25,10 +25,11 @@ public partial class MainWindow: Gtk.Window
 		};
 
 	// Boton eliminar 
-		removeAction.Sensitive = false; //Deshabilita el boton de eliminar
-		removeAction.Activated += delegate {
+		clearAction.Sensitive = false; //Deshabilita el boton de eliminar
+		clearAction.Activated += delegate {
 			object id = TreeViewHelper.GetId(treeView);
 			delete(id);
+			fillTreeView ();
 		};
 
 	// Boton de editar
@@ -42,16 +43,11 @@ public partial class MainWindow: Gtk.Window
 
 	// Deteccion de cambio de elemento seleccionado
 		treeView.Selection.Changed += delegate {
-			removeAction.Sensitive = TreeViewHelper.isSelected(treeView);
+			clearAction.Sensitive = TreeViewHelper.isSelected(treeView);
 			editAction.Sensitive = TreeViewHelper.isSelected(treeView);
 			//Sirve para ver los cambios
 		};
 	}
-
-
-
-
-
 
 	private void fillTreeView(){
 		QueryResult queryResult = PersisterHelper.Get ("select * from articulo");
@@ -66,7 +62,7 @@ public partial class MainWindow: Gtk.Window
 
 	private void delete(object id){
 		if (confirmDelete (this)) {
-			QueryResult queryResult = PersisterHelper.Get ("DELETE FROM `articulo` WHERE id = "+id.ToString());
+			PersisterHelper.Get ("DELETE FROM `articulo` WHERE id = "+id.ToString());
 			fillTreeView ();
 		}
 	}
